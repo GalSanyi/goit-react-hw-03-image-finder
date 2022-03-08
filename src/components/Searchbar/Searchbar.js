@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
+import s from './Searchbar.module.css';
 
-export default class Searchbar extends Component {
-  render() {
-    return (
-      <div>
-        <header class="searchbar">
-          <form class="form">
-            <button type="submit" class="button">
-              <span class="button-label">Search</span>
-            </button>
+import React from 'react';
 
-            <input
-              class="input"
-              type="text"
-              autocomplete="off"
-              autofocus
-              placeholder="Search images and photos"
-            />
-          </form>
-        </header>
-      </div>
-    );
-  }
+export default function Searchbar({ query, handleSetQuery, handleSubmitForm }) {
+  return (
+    <div>
+      <header className={s.Searchbar}>
+        <form onSubmit={handleSubmitForm} className={s.SearchForm}>
+          <button type="submit" className={s.SearchFormButton}>
+            <span className={s.SearchFormButtonLabel}>Search</span>
+          </button>
+
+          <input
+            value={query}
+            onChange={handleSetQuery}
+            name="query"
+            className={s.SearchFormInput}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+          />
+        </form>
+      </header>
+    </div>
+  );
 }
