@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import s from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 export default class Modal extends Component {
   onCloseModalByEsc = event => {
@@ -33,3 +34,7 @@ export default class Modal extends Component {
     );
   }
 }
+Modal.propTypes = {
+  handleToggleModal: PropTypes.func.isRequired,
+  modalImg: PropTypes.string.isRequired,
+};
