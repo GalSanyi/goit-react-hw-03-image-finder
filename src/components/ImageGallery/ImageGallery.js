@@ -4,18 +4,18 @@ import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 const ImageGallery = ({ images, handleToggleModal }) => {
   return (
-    <>
-      <ul className={s.ImageGallery}>
-        {images.map(({ id, webformatURL, largeImageURL }) => (
+    <div className={s.ImageGallery}>
+      {images.map(({ id, webformatURL, largeImageURL }) => (
+        <ul>
           <ImageGalleryItem
             handleToggleModal={handleToggleModal}
             key={id}
             img={webformatURL}
             modalImg={largeImageURL}
           />
-        ))}
-      </ul>
-    </>
+        </ul>
+      ))}
+    </div>
   );
 };
 
