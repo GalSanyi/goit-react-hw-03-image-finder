@@ -2,6 +2,7 @@ import React from 'react';
 import s from './imageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
+
 const ImageGallery = ({ images, handleToggleModal }) => {
   return (
     <div className={s.ImageGallery}>

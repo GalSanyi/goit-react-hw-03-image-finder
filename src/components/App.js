@@ -27,10 +27,11 @@ export default class App extends Component {
     this.setState({ isPending: true, page: 1 });
   };
   componentDidUpdate() {
-    if (this.state.isPending) {
-      fetchImages(this.state.query, this.state.page).then(img => {
+    const { isPending, query, page } = this.state;
+    if (isPending) {
+      fetchImages(query, page).then(img => {
         this.setState(prev => ({
-          images: this.state.page > 1 ? [...prev.images, ...img] : img,
+          images: page > 1 ? [...prev.images, ...img] : img,
           isPending: false,
         }));
       });
