@@ -18,13 +18,9 @@ export default class App extends Component {
     modalImg: '',
   };
 
-  handleSetQuery = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
-
-  handleSubmitForm = event => {
-    event.preventDefault();
-    this.setState({ isPending: true, page: 1 });
+  formSubmitHandler = query => {
+    console.log('query', query);
+    this.setState({ query, isPending: true, images: [], page: 1 });
   };
   componentDidUpdate() {
     const { isPending, query, page } = this.state;
@@ -47,20 +43,11 @@ export default class App extends Component {
     this.setState(prev => ({ page: prev.page + 1, isPending: true }));
   }
   render() {
-    const { query, images, isModalOpen, modalImg, isPending } = this.state;
-    const {
-      handleSetQuery,
-      handleSubmitForm,
-      handleToggleModal,
-      handleLoadMore,
-    } = this;
+    const { images, isModalOpen, modalImg, isPending } = this.state;
+    const { handleToggleModal, handleLoadMore } = this;
     return (
       <div>
-        <Searchbar
-          handleSetQuery={handleSetQuery}
-          query={query}
-          handleSubmitForm={handleSubmitForm}
-        />
+        <Searchbar onSubmit={this.formSubmitHandler} />
         <ImageGallery handleToggleModal={handleToggleModal} images={images} />
         {images.length >= 12 && (
           <Button handleLoadMore={handleLoadMore.bind(this)} />
