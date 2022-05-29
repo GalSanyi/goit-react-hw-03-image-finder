@@ -5,6 +5,11 @@ const fetchImages = async (query, page) => {
   const response = await axios.get(
     `.?q=${query}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`
   );
-  return response.data.hits;
+  return response.data.hits.map(({ id, webformatURL, tag, largeImageURL }) => ({
+    id,
+    webformatURL,
+    tag,
+    largeImageURL,
+  }));
 };
 export default fetchImages;

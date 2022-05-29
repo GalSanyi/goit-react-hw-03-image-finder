@@ -6,11 +6,12 @@ import PropTypes from 'prop-types';
 const ImageGallery = ({ images, handleToggleModal }) => {
   return (
     <div className={s.ImageGallery}>
-      {images.map(({ id, webformatURL, largeImageURL }) => (
+      {images.map(({ id, webformatURL, largeImageURL, tag }) => (
         <ul>
           <ImageGalleryItem
             handleToggleModal={handleToggleModal}
             key={id}
+            tag={tag}
             img={webformatURL}
             modalImg={largeImageURL}
           />

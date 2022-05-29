@@ -3,6 +3,11 @@ import s from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 export default class Modal extends Component {
+  static defaultProps = {
+    handleToggleModal: PropTypes.func.isRequired,
+    modalImg: PropTypes.string.isRequired,
+  };
+
   onCloseModalByEsc = event => {
     if (event.keyCode === 27) {
       this.props.handleToggleModal('');
@@ -34,7 +39,3 @@ export default class Modal extends Component {
     );
   }
 }
-Modal.propTypes = {
-  handleToggleModal: PropTypes.func.isRequired,
-  modalImg: PropTypes.string.isRequired,
-};
