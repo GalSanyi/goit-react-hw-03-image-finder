@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 
 export default function ImageGalleryItem({ img, modalImg, handleToggleModal }) {
   return (
-    <ul>
-      <li
-        onClick={() => handleToggleModal(modalImg)}
-        className={s.ImageGalleryItem}
-      >
-        <img className={s.ImageGalleryItemImage} src={img} alt="" />
-      </li>
-    </ul>
+    <li
+      onClick={() => handleToggleModal(modalImg)}
+      className={s.ImageGalleryItem}
+    >
+      <img className={s.ImageGalleryItemImage} src={img} alt="" />
+    </li>
   );
 }
 ImageGalleryItem.propTypes = {
